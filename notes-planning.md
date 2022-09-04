@@ -13,9 +13,6 @@ stack:
 ## Planning
 
 - [ ] start with a simplified problem
-    - [ ] the basic calculation for 1 player
-
-- [ ] setup node project
 - [ ] setup express
 - [ ] setup typescript
 - [ ] create API endpoint
@@ -28,3 +25,6 @@ stack:
 - [ ] create the calculation
     - [ ] start with just Javscript
     - [ ] start with .json data containing just 1 match
+    - [ ] the basic calculation for 1 player
+    - [ ] setup node project
+    - [ ] create app.js with tests
