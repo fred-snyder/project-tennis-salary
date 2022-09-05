@@ -103,7 +103,7 @@ function calcTotalSalary(id) {
 		totalSalary = totalSalary + calcStatsSalary(el.aces, el.smashedRackets, el.doubleFaults, playerIndex);
 	});
 
-	console.log('Total salary:', totalSalary);
+	console.log(`Total salary for player#${id}: EUR ${totalSalary}e`);
 
 	return totalSalary;
 }
