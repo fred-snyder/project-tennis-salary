@@ -1,7 +1,5 @@
 // salary calculation logic
 
-import data from './data/player_data.json' assert { type: 'json' };
-
 // calculate the number of sets/games won and if the match is won
 // and return the score/prize/winnings for that match
 function calcMatchSalary(arr, playerIndex) {
@@ -64,7 +62,7 @@ function calcTotalSalary(data, id) {
 	// verify that the id was found
 	if (playerName === undefined) {
 		console.log(`Error: player with id #${id} not found.`);
-		return;
+		return null;
 	}
 
 	matches.forEach((el) => {
@@ -89,11 +87,13 @@ function calcTotalSalary(data, id) {
 
 	console.log(`Total salary for player with name ${playerName} and id#${id}: EUR ${totalSalary}e`);
 
-	return totalSalary;
+	const obj = {
+		id: id,
+		name: playerName,
+		totalSalary: totalSalary,
+	};
+
+	return obj;
 }
 
-calcTotalSalary(data, 1);
-calcTotalSalary(data, 2);
-calcTotalSalary(data, 3);
-calcTotalSalary(data, 4);
-calcTotalSalary(data, 5);
+export default calcTotalSalary;
