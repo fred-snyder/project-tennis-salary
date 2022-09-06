@@ -15,7 +15,7 @@ stack:
 - [x] start with a simplified problem
 - [x] setup express
 - [x] create API endpoint
-- [ ] start with the API design (succesfull ID match, ID not found, etc)
+- [x] start with the API design (succesfull ID match, ID not found, etc)
 
 
 ```plain
@@ -39,6 +39,7 @@ Statuscode 404 OK
 };
 ```
 
+**Typescript conversion**
 - [ ] add typescript
 - [ ] convert everything to `.ts`
 
