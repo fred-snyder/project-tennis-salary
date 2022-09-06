@@ -40,7 +40,16 @@ function calcMatchSalary(arr, playerIndex) {
 }
 
 // example for calcMatchSalary
-// calcMatchSalary([[6,2],[4,6],[7,5],[5,7],[6,1]], 1)
+// calcMatchSalary(
+// 	[
+// 		[6, 2],
+// 		[4, 6],
+// 		[7, 5],
+// 		[5, 7],
+// 		[6, 1],
+// 	],
+// 	1
+// );
 
 /*
  * 100e        for every ace
@@ -67,9 +76,25 @@ function calcStatsSalary(arrAces, arrRackets, arrFaults, playerIndex) {
 // calcStatsSalary([6, 15], [2, 1], [3, 4], 1);
 
 // calculate the total salary
-function calcTotalSalary(id) {
+function calcTotalSalary(data, id) {
+	const matches = data[0].matches;
+	const players = data[0].players;
+
 	// count total salary for id
 	let totalSalary = 0;
+	let playerName;
+
+	players.forEach((el) => {
+		if (el.id === id) {
+			playerName = el.name;
+		}
+	});
+
+	// verify that the id was found
+	if (playerName === undefined) {
+		console.log(`Error: player with id #${id} not found.`);
+		return;
+	}
 
 	matches.forEach((el) => {
 		// find the array index that we have to sum/analyse
@@ -78,19 +103,26 @@ function calcTotalSalary(id) {
 			playerIndex = 0;
 		} else if (el.opponentId === id) {
 			playerIndex = 1;
+		} else if (el.opponentId !== id && el.playerId !== id) {
+			playerIndex = null;
 		}
 
-		// calculate the salary for the match and add to total
-		totalSalary = totalSalary + calcMatchSalary(el.result, playerIndex);
-
-		// calculate the salary for the stats
-		totalSalary = totalSalary + calcStatsSalary(el.aces, el.smashedRackets, el.doubleFaults, playerIndex);
+		// skip matches that do not include the id
+		if (playerIndex !== null) {
+			// calculate the salary for the match and add to total
+			totalSalary = totalSalary + calcMatchSalary(el.result, playerIndex);
+			// calculate the salary for the stats
+			totalSalary = totalSalary + calcStatsSalary(el.aces, el.smashedRackets, el.doubleFaults, playerIndex);
+		}
 	});
 
-	console.log(`Total salary for player#${id}: EUR ${totalSalary}e`);
+	console.log(`Total salary for player with name ${playerName} and id#${id}: EUR ${totalSalary}e`);
 
 	return totalSalary;
 }
 
-calcTotalSalary(1); // for id:1 should be 10150
-calcTotalSalary(2); // for id:2 should be 6800
+calcTotalSalary(data, 1);
+calcTotalSalary(data, 2);
+calcTotalSalary(data, 3);
+calcTotalSalary(data, 4);
+calcTotalSalary(data, 5);
