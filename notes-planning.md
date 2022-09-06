@@ -13,10 +13,34 @@ stack:
 ## Planning
 
 - [x] start with a simplified problem
-- [ ] setup express
-- [ ] setup typescript
-- [ ] create API endpoint
-- [ ] design the API (succesfull ID match, ID not found, etc)
+- [x] setup express
+- [x] create API endpoint
+- [ ] start with the API design (succesfull ID match, ID not found, etc)
+
+
+```plain
+localhost:8080/salary/
+Tennis API player salary
+
+localhost:8080/salary/player/{id}
+
+id=1
+Statuscode 200 OK
+{
+	id: 0,
+	name: 'Fred',
+	totalSalary: 20000,
+}
+id=5
+Statuscode 404 OK
+{
+	id: 5,
+	msg: "Id not found"
+};
+```
+
+- [ ] add typescript
+- [ ] convert everything to `.ts`
 
 
 ## Simplified problem
