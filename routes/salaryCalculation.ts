@@ -24,6 +24,7 @@ function calcMatchSalary(arr, playerIndex) {
 	});
 
 	let matchSalary = setsWon * 750 + gamesWon * 200 + matchWon * 2500 + matchPlayed;
+	// tslint:disable-next-line:no-console
 	// console.log('setsWon:', setsWon, 'gamesWon:', gamesWon, 'matchWon:', matchWon, 'matchSalary:', matchSalary);
 
 	return matchSalary;
@@ -85,6 +86,7 @@ function calcTotalSalary(data, id) {
 		}
 	});
 
+	// tslint:disable-next-line:no-console
 	console.log(`Total salary for player with name ${playerName} and id#${id}: EUR ${totalSalary}e`);
 
 	const obj = {

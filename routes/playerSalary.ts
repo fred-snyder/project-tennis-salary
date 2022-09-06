@@ -1,6 +1,6 @@
 // imports
 import { Router } from 'express';
-import { default as calcTotalSalary } from './salaryCalculation.js';
+import { default as calcTotalSalary } from './salaryCalculation';
 import data from '../data/player_data.json' assert { type: 'json' };
 
 // initialize the router
@@ -8,6 +8,7 @@ const router = Router();
 
 // middleware
 router.use((req, res, next) => {
+	// tslint:disable-next-line:no-console
 	// console.log('Middleware here');
 	next();
 });
