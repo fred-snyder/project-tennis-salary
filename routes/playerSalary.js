@@ -10,6 +10,8 @@ const jsonResExample = {
 
 // imports
 import { Router } from 'express';
+import { default as calcTotalSalary } from './salaryCalculation.js';
+import data from '../data/player_data.json' assert { type: 'json' };
 
 // initialize the router
 const router = Router();
