@@ -2,10 +2,28 @@
 
 // JSON response http status code: 200
 
-/*
-{
-    id
-    name
-    totalSalary // total salary after all games played
-}
-*/
+const jsonResExample = {
+	id: 0,
+	name: 'Fred',
+	totalSalary: 20000,
+};
+
+// imports
+import { Router } from 'express';
+
+// initialize the router
+const router = Router();
+
+// middleware
+router.use((req, res, next) => {
+	console.log('Middleware here');
+	next();
+});
+
+// routes
+router.get('/', (req, res) => {
+	// { id: 1, name: 'Djokovic', totalSalary: 10000 }
+	res.json(jsonResExample);
+});
+
+export default router;
