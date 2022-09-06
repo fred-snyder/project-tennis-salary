@@ -2,6 +2,18 @@
 
 An API that returns a tennis player's salary based on a set of match data.
 
+```sh
+# run eslint
+npm eslint .
+pnpm exec eslint .
+
+# run Typescript in watch mode
+tsc --watch
+
+# then run node to watch for node changes
+nodemon ./dist/app.js
+```
+
 # Tennis player salary API
 
 - calculate salary of a player
