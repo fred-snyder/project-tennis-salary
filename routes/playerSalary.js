@@ -13,10 +13,16 @@ router.use((req, res, next) => {
 });
 
 // routes
-router.get('/', (req, res) => {
-	// { id: 1, name: 'Djokovic', totalSalary: 10000 }
-	res.json(jsonResExample);
 // localhost:8080/salary/player/{id}
+router.get('/:id', (req, res) => {
+	const responseObj = calcTotalSalary(data, parseInt(req.params.id));
+	// null means 'error id not found'
+	if (responseObj !== null) {
+		res.json(responseObj);
+	} else {
+		res.statusCode = 404;
+		res.json({ msg: `No player with id# ${parseInt(req.params.id)} found.` });
+	}
 });
 
 export default router;
