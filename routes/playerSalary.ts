@@ -1,7 +1,11 @@
 // imports
 import { Router } from 'express';
-import { default as calcTotalSalary } from './salaryCalculation';
-import data from '../data/player_data.json' assert { type: 'json' };
+import { default as calcTotalSalary } from './salaryCalculation.js';
+import importedJson from '../data/player_data.json';
+
+// NOTE: type hack??
+const json: any = importedJson;
+const data: tennisData = json;
 
 // initialize the router
 const router = Router();

@@ -2,12 +2,14 @@
 
 // calculate the number of sets/games won and if the match is won
 // and return the score/prize/winnings for that match
-function calcMatchSalary(arr, playerIndex) {
+function calcMatchSalary(arr: match['result'], playerIndex: number) {
+	// NOTE: not sure if it's better to use match['result'] or [number. number][]
 	// count the scores/winnings
-	let [setsWon, gamesWon, matchWon] = [0, 0, 0];
-	let matchPlayed = 500;
+	let [setsWon, gamesWon, matchWon]: [number, number, number] = [0, 0, 0];
+	let matchPlayed: number = 500;
 
 	arr.forEach((el) => {
+		console.log(el);
 		// count a winning set for player
 		if (el[0] >= el[1] && playerIndex === 0) {
 			setsWon++;
@@ -31,9 +33,14 @@ function calcMatchSalary(arr, playerIndex) {
 }
 
 // calculate the other match statistics, aces, faults, rackets
-function calcStatsSalary(arrAces, arrRackets, arrFaults, playerIndex) {
+function calcStatsSalary(
+	arrAces: match['aces'],
+	arrRackets: match['smashedRackets'],
+	arrFaults: match['doubleFaults'],
+	playerIndex: number
+) {
 	// counters
-	let [salaryAces, salaryFaults, salaryRackets] = [0, 0, 0];
+	let [salaryAces, salaryFaults, salaryRackets]: [number, number, number] = [0, 0, 0];
 
 	salaryAces = arrAces[playerIndex] * 100;
 	salaryFaults = arrFaults[playerIndex] * -100;
@@ -46,16 +53,16 @@ function calcStatsSalary(arrAces, arrRackets, arrFaults, playerIndex) {
 }
 
 // calculate the total salary
-function calcTotalSalary(data, id) {
+function calcTotalSalary(data: tennisData, id: number) {
 	const matches = data[0].matches;
 	const players = data[0].players;
 
 	// count total salary for id
-	let totalSalary = 0;
-	let playerName;
+	let totalSalary: number = 0;
+	let playerName: string = '';
 
 	players.forEach((el) => {
-		if (el.id === id) {
+		if (parseInt(el.id) === id) {
 			playerName = el.name;
 		}
 	});
@@ -68,7 +75,7 @@ function calcTotalSalary(data, id) {
 
 	matches.forEach((el) => {
 		// find the array index that we have to sum/analyse
-		let playerIndex;
+		let playerIndex: number | null = null;
 		if (el.playerId === id) {
 			playerIndex = 0;
 		} else if (el.opponentId === id) {
